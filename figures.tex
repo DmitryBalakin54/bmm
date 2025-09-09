@@ -1,0 +1,2260 @@
+% Общие настройки для всех рисунков
+\tikzset{
+    my drawing/.style={
+       scale=#1,
+      line join=round,
+      line cap=round,
+      thick/.style={line width=0.15pt * #1},
+      dashed/.style={dash pattern=on 2pt * #1 off 1pt * #1, line width=0.15pt * #1},
+      vertex/.style={fill=black, circle, inner sep=0.25pt * #1},
+     % my label/.style={font=\footnotesize},
+     my label/.style={
+    font=\fontsize{10pt}{25pt}\selectfont,
+    inner sep=0.2pt,
+    outer sep=1.8pt,
+    scale=0.3 * #1
+},
+        my formula/.style={
+            font=\fontsize{12.5pt}{25pt}\selectfont,
+            inner sep=0.2pt,
+            outer sep=4pt,
+            scale=0.2 * #1,
+        },
+      rotate around z=0,
+      rotate around x=0,
+      rotate around y=0,
+    }
+}
+
+
+
+\newcommand{\drawcube}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{0.5}
+    \def\z{1.2}
+    
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x+\y,\y);
+    \coordinate (D) at (\y,\y);
+    \coordinate (A1) at (0,\z);
+    \coordinate (B1) at (\x,\z);
+    \coordinate (C1) at (\x+\y,\y+\z);
+    \coordinate (D1) at (\y,\y+\z);
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (B) -- (B1) -- (C1) -- (C);
+    \draw[thick] (B1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!80, thick, opacity=0.7] 
+      (A) -- (B) -- (C1) -- (D1) -- cycle;
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (B) {$B$};
+    \node[above right, my label] at (C) {$C$};
+    \node[left, my label] at (D) {$D$};
+    \node[left, my label] at (A1) {$A_1$};
+    \node[right, my label] at (B1) {$B_1$};
+    \node[right, my label] at (C1) {$C_1$};
+    \node[left, my label] at (D1) {$D_1$};
+
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+% \newcommand{\drawCubeTaskOne}[2][]{
+%   \begin{tikzpicture}[
+%       scale=#2,
+%       line join=round,
+%       line cap=round,
+%       thick/.style={line width=0.3pt},
+%       dashed/.style={dash pattern=on 2pt off 1pt, line width=0.3pt},
+%       vertex/.style={fill=black, circle, inner sep=0.5pt},
+%       my label/.style={font=\footnotesize},
+%       rotate around z=0,
+%       rotate around x=0,
+%       rotate around y=0,
+%       #1
+%     ]
+    
+%     \def\x{1.0}
+%     \def\y{1.0}
+%     \def\z{1.0}
+    
+%     % \coordinate (A) at (0,0);
+%     % \coordinate (D) at (\x,0);
+%     % \coordinate (C) at (\x * 4 / 11 + \x,\x * 7 / 11);
+%     % \coordinate (B) at (\x * 4 / 11,\x * 7 / 11);
+%     % \coordinate (A1) at (0,\x);
+%     % \coordinate (D1) at (\x,\x);
+%     % \coordinate (C1) at (\x * 4 / 11 + \x,\x * 7 / 11 + \x);
+%     % \coordinate (B1) at (\x * 4 / 11,\x * 7 / 11 + \x);
+
+    
+%     % \coordinate (A) at (0,0);
+%     % \coordinate (D) at (\x * 0.8660254038, \x * (-0.5));
+%     % \coordinate (C) at (1, (\x * 7 / 11) * 0.8660254038 + (\x * 4 / 11 + \x) * (-0.5));
+%     % \coordinate (B) at (\x * 4 / 11,\x * 7 / 11);
+%     % \coordinate (A1) at (0,\x);
+%     % \coordinate (D1) at (\x,\x);
+%     % \coordinate (C1) at (\x * 4 / 11 + \x,\x * 7 / 11 + \x);
+%     % \coordinate (B1) at (\x * 4 / 11,\x * 7 / 11 + \x);
+
+%     \coordinate (A) at (0,0);
+%     \coordinate (D) at (\x,0);
+%     \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.9);
+%     \coordinate (B) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.9);
+%     \coordinate (A1) at (0,\x);
+%     \coordinate (D1) at (\x,\x);
+%     \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x,(\x * 7 / 11 + \x) * 0.9);
+%     \coordinate (B1) at (\x * 4 / 11 * 0.9,(\x * 7 / 11 + \x) * 0.9);
+
+%     \coordinate (K) at ($(A)!1/3!(C1)$);
+%     \coordinate (O) at ($(A)!1/2!(C)$)
+    
+
+%     \draw[dashed] (A) -- (B);
+%     \draw[dashed] (B) -- (C);
+%     \draw[dashed] (B) -- (B1);
+%     \draw[dashed] (A) -- (C1);
+%     \draw[dashed] (A) -- (C);
+%     \draw[dashed, blue] (B) -- (D);
+%     \draw[dashed] (O) -- (A1);
+%     \draw[dashed, blue] (A1) -- (B);
+
+%     \draw[thick] (A) -- (D) -- (C);
+%     \draw[thick] (D) -- (D1) -- (C1) -- (C);
+%     \draw[thick] (D1) -- (A1);
+%     \draw[thick] (C1) -- (B1);
+%     \draw[thick] (D) -- (D1);
+%     \draw[thick] (A1) -- (B1);
+%     \draw[thick] (A) -- (A1);
+%     \draw[thick, blue] (D) -- (A1);
+    
+
+%     % \filldraw[fill=blue!15, draw=blue!80, thick, opacity=0.7] 
+%     %   (A) -- (B) -- (C1) -- (D1) -- cycle;
+
+%     \node[below left, my label] at (A) {$A$};
+%     \node[below right, my label] at (D) {$D$};
+%     \node[above right, my label] at (C) {$C$};
+%     \node[left, my label] at (B) {$B$};
+%     \node[left, my label] at (A1) {$A_1$};
+%     \node[right, my label] at (D1) {$D_1$};
+%     \node[right, my label] at (C1) {$C_1$};
+%     \node[left, my label] at (B1) {$B_1$};
+%     \node[right, my label] at (K) {$K$};
+%     \node[left, my label] at (O) {$O$};
+
+%     \foreach \point in {A,B,C,D,A1,B1,C1,D1,K,O} {
+%       \node[vertex] at (\point) {};
+%     }
+%   \end{tikzpicture}
+% }
+
+
+
+
+\newcommand{\drawCubeTaskOne}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+    
+    % \coordinate (A) at (0,0);
+    % \coordinate (D) at (\x,0);
+    % \coordinate (C) at (\x * 4 / 11 + \x,\x * 7 / 11);
+    % \coordinate (B) at (\x * 4 / 11,\x * 7 / 11);
+    % \coordinate (A1) at (0,\x);
+    % \coordinate (D1) at (\x,\x);
+    % \coordinate (C1) at (\x * 4 / 11 + \x,\x * 7 / 11 + \x);
+    % \coordinate (B1) at (\x * 4 / 11,\x * 7 / 11 + \x);
+
+    
+    % \coordinate (A) at (0,0);
+    % \coordinate (D) at (\x * 0.8660254038, \x * (-0.5));
+    % \coordinate (C) at (1, (\x * 7 / 11) * 0.8660254038 + (\x * 4 / 11 + \x) * (-0.5));
+    % \coordinate (B) at (\x * 4 / 11,\x * 7 / 11);
+    % \coordinate (A1) at (0,\x);
+    % \coordinate (D1) at (\x,\x);
+    % \coordinate (C1) at (\x * 4 / 11 + \x,\x * 7 / 11 + \x);
+    % \coordinate (B1) at (\x * 4 / 11,\x * 7 / 11 + \x);
+
+    \coordinate (A) at (0,0);
+    \coordinate (D) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (B) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (D1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (B1) at (\x * 4 / 11 * 0.9, 1.19);
+
+    \coordinate (K) at ($(A)!1/3!(C1)$);
+    \coordinate (O) at ($(A)!1/2!(C)$);
+    \coordinate (F) at ($(C1)!1/2!(C)$);
+
+
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (B) -- (B1);
+    \draw[dashed] (A) -- (C1);
+    \draw[dashed] (A) -- (C);
+    
+    
+    \draw[dashed] (O) -- (F);
+
+    \draw[thick] (A) -- (D) -- (C);
+    \draw[thick] (D) -- (D1) -- (C1) -- (C);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (B1);
+    \draw[thick] (D) -- (D1);
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (A1) -- (B) -- (D) -- cycle;
+    
+
+    \draw[dashed, blue] (A1) -- (B);
+    \draw[thick, blue] (D) -- (A1);
+    \draw[dashed, blue] (B) -- (D);
+
+
+    \draw[dashed] (O) -- (A1);
+    \draw[dashed] (A) -- (K);
+    
+
+
+    \pic [draw, thick, angle radius=2mm, angle eccentricity=1.2] {right angle = A--O--B};
+    \pic [draw, thick, angle radius=2mm, angle eccentricity=1.2] {right angle = F--O--D};
+    
+    
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[left, my label] at (B) {$B$};
+    \node[left, my label] at (A1) {$A_1$};
+    \node[above left, my label] at (D1) {$D_1$};
+    \node[right, my label] at (C1) {$C_1$};
+    \node[above left, my label] at (B1) {$B_1$};
+    \node[right, my label] at (K) {$K$};
+    \node[below, my label] at (O) {$O$};
+    \node[right, my label] at (F) {$F$};
+    
+
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,K,O,F} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawCubeTaskOnePTwo}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+
+    \coordinate (A) at (0,0);
+    \coordinate (C) at (1.41 * \x, 0);
+    \coordinate (A1) at (0,\x);
+    \coordinate (C1) at (1.41 * \x, \x);
+
+    \coordinate (K) at ($(A)!1/3!(C1)$);
+    \coordinate (O) at ($(A)!1/2!(C)$);
+    
+
+    \draw[thick] (A) -- (C1);
+    \draw[thick] (A) -- (C);
+    \draw[thick] (A) -- (A1);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (C1) -- (A1);
+    \draw[thick] (O) -- (K);
+    
+
+    \pic [draw, thick, angle radius=2mm, angle eccentricity=1.2] {right angle = A--K--O};
+    \pic [draw, thick, angle radius=2mm, angle eccentricity=1.2] {right angle = O--C--C1};
+    \pic [draw, thick, angle radius=3mm] {angle=O--A--K};
+
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (C) {$C$};
+    \node[left, my label] at (A1) {$A_1$};
+    \node[right, my label] at (C1) {$C_1$};
+    \node[right, my label] at (K) {$K$};
+    \node[below, my label] at (O) {$O$};
+
+    \draw (A) -- (O) node[midway, below, sloped, my formula] {$\frac{a \sqrt{2}}{2}$};
+    \draw (C) -- (O) node[midway, below, sloped, my formula] {$\frac{a \sqrt{2}}{2}$};
+    \draw (A) -- (K) node[midway, above, sloped, my formula] {$\frac{a \sqrt{3}}{3}$};
+    \draw (C1) -- (K) node[midway, above, sloped, my formula] {$\frac{2 a \sqrt{3}}{3}$};
+    \draw (C) -- (C1) node[midway, right, my formula] {$a$};
+
+
+
+    \foreach \point in {A,C,A1,C1,K,O} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawCubeTaskOnePThree}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+
+    \coordinate (A) at (0,0);
+    \coordinate (C) at (1.41 * \x, 0);
+    \coordinate (A1) at (0,\x - 0.2);
+    \coordinate (C1) at (1.41 * \x, \x - 0.2);
+    \coordinate (M) at (0.15 - 0.05, \x - 0.2);
+
+    \coordinate (K) at ($(A)!105/300!(C1)$);
+    \coordinate (O) at ($(A)!100/200!(C)$);
+    
+
+    \draw[thick] (A) -- (C1);
+    \draw[thick] (A) -- (C);
+    \draw[thick] (A) -- (A1);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (C1) -- (A1);
+    \draw[thick] (O) -- (K);
+    \draw[thick] (O) -- (M);
+    
+
+    \pic [draw, thick, angle radius=2mm, angle eccentricity=1.2] {right angle = A--K--O};
+    \pic [draw, thick, angle radius=2mm, angle eccentricity=1.2] {right angle = O--C--C1};
+    \pic [draw, thick, angle radius=3mm] {angle=O--A--K};
+    
+    \pic [draw, thick, angle radius=3mm] {angle=K--M--C1};
+    \pic [draw, thick, angle radius=2mm] {angle=K--M--C1};
+    \pic [draw, thick, angle radius=2mm, angle eccentricity=1.2] {right angle = M--K--C1};
+    \pic [draw, thick, angle radius=2mm] {angle=K--O--A};
+    \pic [draw, thick, angle radius=3mm] {angle=K--O--A};
+    \pic [draw, thick, angle radius=3mm] {angle=M--C1--K};
+
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (C) {$C$};
+    \node[left, my label] at (A1) {$A_1$};
+    \node[right, my label] at (C1) {$C_1$};
+    \node[right, my label] at (K) {$K$};
+    \node[below, my label] at (O) {$O$};
+    \node[above, my label] at (M) {$M$};
+
+    \draw (A) -- (O) node[midway, below, sloped, my formula] {$\frac{a \sqrt{2}}{2}$};
+    \draw (C) -- (O) node[midway, below, sloped, my formula] {$\frac{a \sqrt{2}}{2}$};
+    \draw (A) -- (K) node[midway, above, sloped, my formula] {$\frac{a \sqrt{3}}{3}$};
+    \draw (C1) -- (K) node[midway, above, sloped, my formula] {$\frac{2 a \sqrt{3}}{3}$};
+    \draw (C) -- (C1) node[midway, right, my formula] {$a$};
+
+
+
+    \foreach \point in {A,C,A1,C1,K,O, M} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+
+
+
+\newcommand{\drawPyramidTask}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (D) at (\x,0);
+    \coordinate (C) at (\x * 3 / 8 + \x,\x * 1 / 2);
+    \coordinate (B) at (\x * 3 / 8,\x * 1 / 2);
+
+    \coordinate (O) at ($(A)!1/2!(C)$);
+    \coordinate (S) at ($(O) + (0, 1.5 * \x)$);
+
+    \coordinate (M) at ($(S)!7/10!(C)$);
+    \coordinate (N) at ($(D)!9/10!(C)$);
+    
+
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (A) -- (C);
+    \draw[dashed] (B) -- (D);
+    \draw[dashed] (B) -- (S);
+    \draw[dashed] (S) -- (O);
+    
+    
+
+    \draw[thick] (A) -- (D) -- (C);
+    \draw[thick] (A) -- (S);
+    \draw[thick] (D) -- (S);
+    \draw[thick] (A) -- (S);
+    \draw[thick] (C) -- (S);
+    
+    
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[left, my label] at (B) {$B$};
+    \node[below, my label] at (O) {$O$};
+    \node[above, my label] at (S) {$S$};
+    \node[above right, my label] at (M) {$M$};
+    \node[below right, my label] at (N) {$N$};
+
+    \foreach \point in {A,B,C,D,O,S,M,N} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawPyramidTaskPTwo}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (D) at (\x,0);
+    \coordinate (C) at (\x * 3 / 8 + \x,\x * 1 / 2);
+    \coordinate (B) at (\x * 3 / 8,\x * 1 / 2);
+
+    \coordinate (O) at ($(A)!1/2!(C)$);
+    \coordinate (S) at ($(O) + (0, 1.5 * \x)$);
+
+    \coordinate (M) at ($(S)!7/10!(C)$);
+    \coordinate (N) at ($(D)!9/10!(C)$);
+    \coordinate (K) at ($(A)!7/10!(C)$);
+    \coordinate (T) at ($(B)!23/30!(A)$);
+    \coordinate (F) at ($(B)!23/30!(S)$);
+    
+    
+
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (A) -- (C);
+    \draw[dashed] (B) -- (D);
+    \draw[dashed] (B) -- (S);
+    
+    \draw[thick] (A) -- (D) -- (C);
+    \draw[thick] (A) -- (S);
+    \draw[thick] (C) -- (S);
+
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+            (N) -- (M) -- (F) -- (T) -- cycle;
+
+    \draw[dashed, blue] (K) -- (M);
+    \draw[dashed, blue] (T) -- (N);
+    \draw[dashed, blue] (T) -- (F);
+    \draw[dashed, blue] (M) -- (F);
+    
+    \draw[thick, blue] (M) -- (N);
+
+    \draw[thick] (A) -- (S);
+    \draw[thick] (D) -- (S);
+    \draw[dashed] (S) -- (O);
+    
+    
+    
+    
+    
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[left, my label] at (B) {$B$};
+    \node[below, my label] at (O) {$O$};
+    \node[above, my label] at (S) {$S$};
+    \node[above right, my label] at (M) {$M$};
+    \node[below right, my label] at (N) {$N$};
+    \node[above, my label] at (K) {$K$};
+    \node[right, my label] at (T) {$T$};
+    \node[below, my label] at (F) {$F$};
+    
+
+    \foreach \point in {A,B,C,D,O,S,M,N,K,T,F} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawPyramidTaskPThree}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (D) at (\x,0);
+    \coordinate (C) at (\x * 3 / 8 + \x,\x * 1 / 2);
+    \coordinate (B) at (\x * 3 / 8,\x * 1 / 2);
+
+    \coordinate (O) at ($(A)!1/2!(C)$);
+    \coordinate (S) at ($(O) + (0, 1.5 * \x)$);
+
+    \coordinate (M) at ($(S)!7/10!(C)$);
+    \coordinate (N) at ($(C)!9/10!(D)$);
+    
+
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (A) -- (C);
+    \draw[dashed] (B) -- (D);
+    \draw[dashed] (B) -- (S);
+    \draw[dashed] (S) -- (O);
+    
+    
+
+    \draw[thick] (A) -- (D) -- (C);
+    \draw[thick] (A) -- (S);
+    \draw[thick] (D) -- (S);
+    \draw[thick] (A) -- (S);
+    \draw[thick] (C) -- (S);
+    
+    
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[left, my label] at (B) {$B$};
+    \node[below, my label] at (O) {$O$};
+    \node[above, my label] at (S) {$S$};
+    \node[above right, my label] at (M) {$M$};
+    \node[above right, my label] at (N) {$N$};
+
+    \foreach \point in {A,B,C,D,O,S,M,N} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawPyramidTaskPFour}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (D) at (\x,0);
+    \coordinate (C) at (\x * 3 / 8 + \x,\x * 1 / 2);
+    \coordinate (B) at (\x * 3 / 8,\x * 1 / 2);
+
+    \coordinate (O) at ($(A)!1/2!(C)$);
+    \coordinate (S) at ($(O) + (0, 1.5 * \x)$);
+
+    \coordinate (M) at ($(S)!7/10!(C)$);
+    \coordinate (N) at ($(C)!9/10!(D)$);
+    \coordinate (K) at ($(A)!7/10!(C)$);
+    \coordinate (T) at ($(B)!11/20!(C)$);
+    
+
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (A) -- (C);
+    \draw[dashed] (B) -- (D);
+    \draw[dashed] (B) -- (S);
+    \draw[dashed] (S) -- (O);
+
+    
+
+    \draw[thick] (A) -- (D) -- (C);
+    \draw[thick] (A) -- (S);
+    \draw[thick] (D) -- (S);
+    \draw[thick] (A) -- (S);
+    \draw[thick] (C) -- (S);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (N) -- (M) -- (T) -- cycle;
+
+    \draw[thick, blue] (M) -- (N);
+    \draw[dashed, blue] (T) -- (N);
+    \draw[dashed, blue] (M) -- (T);
+    \draw[dashed, blue] (M) -- (K);
+    
+    
+    
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[left, my label] at (B) {$B$};
+    \node[below, my label] at (O) {$O$};
+    \node[above, my label] at (S) {$S$};
+    \node[above right, my label] at (M) {$M$};
+    \node[above right, my label] at (N) {$N$};
+    \node[above right, my label] at (K) {$K$};
+    \node[above, my label] at (T) {$T$};
+
+    \foreach \point in {A,B,C,D,O,S,M,N,K,T} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawPyramidTaskPFive}[2][]{
+  \begin{tikzpicture} [my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (D) at (\x,0);
+    \coordinate (C) at (\x * 3 / 8 + \x,\x * 1 / 2);
+    \coordinate (B) at (\x * 3 / 8,\x * 1 / 2);
+
+    \coordinate (O) at ($(A)!1/2!(C)$);
+    \coordinate (S) at ($(O) + (0, 1.5 * \x)$);
+
+    \coordinate (M) at ($(S)!2/3!(C)$);
+    \coordinate (N) at ($(C)!5/10!(D)$);
+    \coordinate (K) at ($(A)!2/3!(C)$);
+
+   
+    
+
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (A) -- (C);
+    \draw[dashed] (B) -- (D);
+    \draw[dashed] (B) -- (S);
+
+    
+    \draw[thick] (A) -- (D) -- (C);
+    \draw[thick] (A) -- (S);
+    \draw[thick] (A) -- (S);
+    \draw[thick] (C) -- (S);
+
+     \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (N) -- (M) -- (B) -- cycle;
+    
+    \draw[thick, blue] (M) -- (N);
+    \draw[dashed, blue] (B) -- (N);
+    \draw[dashed, blue] (M) -- (B);
+    \draw[dashed, blue] (M) -- (K);
+
+    \draw[dashed] (S) -- (O);
+    \draw[thick] (D) -- (S);
+    
+    
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[left, my label] at (B) {$B$};
+    \node[below, my label] at (O) {$O$};
+    \node[above, my label] at (S) {$S$};
+    \node[above right, my label] at (M) {$M$};
+    \node[above right, my label] at (N) {$N$};
+    \node[above right, my label] at (K) {$K$};
+
+    \foreach \point in {A,B,C,D,O,S,M,N,K} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawCubeTaskTwo}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+    \coordinate (K) at ($(A) !1/2! (D)$);
+
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (B1) -- (C1);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+    
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (K) -- (D1) -- (C) -- cycle;
+
+    \draw[dashed, blue] (K) -- (D1);
+    \draw[dashed, blue] (K) -- (C);
+    \draw[dashed, blue] (C) -- (D1);
+
+
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B) -- (B1);
+    
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above left, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+    \node [above left, my label] at (K) {$K$};
+    
+
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,K} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawCubeTaskTwoPTwo}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (B1) -- (C1);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+    \draw[thick] (A1) -- (B1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (D) -- (B) -- (C1) -- cycle;
+
+    \draw[dashed, blue] (D) -- (B);
+    \draw[dashed, blue] (D) -- (C1);
+    \draw[thick, blue] (B) -- (C1);
+
+    \draw[thick] (B) -- (B1);
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above left, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+    
+
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawCubeTaskTwoPThree}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+    \coordinate (A2) at ($(A1) !3/4! (B1)$);
+    \coordinate (B2) at ($(B) !4/5! (B1)$);
+    \coordinate (C2) at ($(C1) !3/4! (B1)$);
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (A2) -- (B2) -- (C2) -- cycle;
+
+    \draw[thick, blue] (A2) -- (B2);
+    \draw[thick, blue] (A2) -- (C2);
+    \draw[thick, blue] (B2) -- (C2);
+
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (B1) -- (C1);
+    
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above left, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+    \node[above, my label] at (A2) {$A_2$};
+    \node[below right, my label] at (B2) {$B_2$};
+    \node[above, my label] at (C2) {$C_2$};
+    
+    
+
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,A2,B2,C2} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPFour}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+    \coordinate (A2) at ($(A) !6/10! (A1)$);
+    \coordinate (B2) at ($(A1) !4/5! (B1)$);
+    \coordinate (D2) at ($(A1) !5/8! (D1)$);
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (B1) -- (C1);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (A2) -- (B2) -- (D2) -- cycle;
+
+    \draw[thick, blue] (A2) -- (B2);
+    \draw[dashed, blue] (A2) -- (D2);
+    \draw[thick, blue] (B2) -- (D2);
+
+    \draw[thick] (A1) -- (B1);
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+    \node[left, my label] at (A2) {$A^\prime$};
+    \node[above, my label] at (B2) {$B^\prime$};
+    \node[above left, my label] at (D2) {$D^\prime$};
+    
+    
+
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,A2,B2,D2} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPFive}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+    \coordinate (M) at ($(A) !5/8! (B)$);
+    \coordinate (N) at ($(D) !5/8! (C)$);
+    \coordinate (E) at ($(A1) !6/8! (B1)$);
+    \coordinate (F) at ($(D1) !6/8! (C1)$);
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (M) -- (N) -- (F) -- (E)-- cycle;
+
+    \draw[thick, blue] (M) -- (E);
+    \draw[dashed, blue] (M) -- (N);
+    \draw[dashed, blue] (F) -- (N);
+    \draw[thick, blue] (E) -- (F);
+
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (B1) -- (C1);
+    
+    
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[above, my label] at (F) {$F$};
+    \node[above left, my label] at (E) {$E$};
+    \node[below, my label] at (M) {$M$};
+    \node[above left, my label] at (N) {$N$};
+    
+    
+    
+
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,N,M,E,F} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPSix}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (A) -- (A1) -- (C1) -- (C)-- cycle;
+
+    \draw[thick, blue] (A) -- (A1);
+    \draw[dashed, blue] (A) -- (C);
+    \draw[dashed, blue] (C) -- (C1);
+    \draw[thick, blue] (A1) -- (C1);
+
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B1) -- (C1);
+    \draw[thick] (B) -- (B1);
+    
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+    
+    
+    
+
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPSeven}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+    \coordinate (P) at ($(A) !1/2! (B)$);
+    \coordinate (K) at ($(D) !1/2! (C)$);
+    \coordinate (M1) at ($(A1) !1/2! (B1)$);
+    \coordinate (N1) at ($(D1) !1/2! (C1)$);
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (B1) -- (C1);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (P) -- (K) -- (N1) -- (M1)-- cycle;
+
+    \draw[thick, blue] (P) -- (M1);
+    \draw[dashed, blue] (P) -- (K);
+    \draw[dashed, blue] (N1) -- (K);
+    \draw[thick, blue] (M1) -- (N1);
+
+    \draw[thick] (A1) -- (B1);
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[above, my label] at (N1) {$N$};
+    \node[above, my label] at (M1) {$M$};
+    \node[below, my label] at (P) {$P$};
+    \node[below, my label] at (K) {$K$};
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,K,P,M1,N1} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPEight}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (M) at ($(D) !1/2! (C)$);
+    \coordinate (N) at ($(A1) !1/2! (B1)$);
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (A) -- (M) -- (C1) -- (N)-- cycle;
+
+    \draw[thick, blue] (A) -- (N);
+    \draw[dashed, blue] (A) -- (M);
+    \draw[dashed, blue] (C1) -- (M);
+    \draw[thick, blue] (N) -- (C1);
+
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B1) -- (C1);
+    \draw[thick] (B) -- (B1);
+    
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[above, my label] at (N) {$N$};
+    \node[below, my label] at (M) {$M$};
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,M,N} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPNine}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (F) at ($(B1) !4/9! (C1)$);
+    \coordinate (E) at ($(A1) !4/5! (B1)$);
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (A) -- (E) -- (F) -- (C)-- cycle;
+
+    \draw[thick, blue] (A) -- (E);
+    \draw[dashed, blue] (A) -- (C);
+    \draw[thick, blue] (C) -- (F);
+    \draw[thick, blue] (E) -- (F);
+
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (B1) -- (C1);
+    
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[right, my label] at (F) {$F$};
+    \node[above, my label] at (E) {$E$};
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,E,F} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPTen}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (N) at ($(B1) !1/2! (C1)$);
+    \coordinate (M) at ($(A1) !7/10! (B1)$);
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+        (A) -- (M) -- (N) -- (C)-- cycle;
+
+    \draw[thick, blue] (A) -- (M);
+    \draw[dashed, blue] (A) -- (C);
+    \draw[thick, blue] (C) -- (N);
+    \draw[thick, blue] (M) -- (N);
+
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (B1) -- (C1);
+    
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[right, my label] at (N) {$N$};
+    \node[above, my label] at (M) {$M$};
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,M,N} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawCubeTaskTwoPEleven}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (C2) at ($(B1) !1/2! (C1)$);
+    \coordinate (B2) at ($(B) !1/2! (C)$);
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (B1) -- (C1);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+    \draw[thick] (A1) -- (B1);
+
+
+    \draw[thick, blue] (B2) -- (C2);
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[below right, my label] at (B2) {$B_2$};
+    \node[above left, my label] at (C2) {$C_2$};
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,B2,C2} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPTwelve}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (C2) at ($(B1) !1/2! (C1)$);
+    \coordinate (B2) at ($(B) !1/2! (C)$);
+    \coordinate (D2) at ($(A1) !2/3! (B1)$);
+    \coordinate (A2) at ($(A) !5/12! (B)$);
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+            (A2) -- (D2) -- (C2) -- (B2)-- cycle;
+
+    \draw[thick, blue] (B2) -- (C2);
+    \draw[dashed, blue] (A2) -- (B2);
+    \draw[thick, blue] (D2) -- (C2);
+    \draw[thick, blue] (D2) -- (A2);
+
+
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B1) -- (C1);
+    \draw[thick] (B) -- (B1);
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[below right, my label] at (B2) {$B_2$};
+    \node[above left, my label] at (C2) {$C_2$};
+    \node[above left, my label] at (D2) {$D_2$};
+    \node[below, my label] at (A2) {$A_2$};
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,B2,C2,A2,D2} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPThirteen}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (C2) at ($(B1) !1/2! (C1)$);
+    \coordinate (B2) at ($(B) !1/2! (C)$);
+    \coordinate (D2) at ($(A1) !2/3! (D1)$);
+    \coordinate (A2) at ($(A) !2/3! (D)$);
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+            (A2) -- (D2) -- (C2) -- (B2)-- cycle;
+
+    \draw[thick, blue] (B2) -- (C2);
+    \draw[dashed, blue] (A2) -- (B2);
+    \draw[thick, blue] (D2) -- (C2);
+    \draw[dashed, blue] (D2) -- (A2);
+
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (B1) -- (C1);
+    
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[below right, my label] at (B2) {$B_2$};
+    \node[above left, my label] at (C2) {$C_2$};
+    \node[above left, my label] at (D2) {$D_2$};
+    \node[below, my label] at (A2) {$A_2$};
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,B2,C2,A2,D2} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPFourteen}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (K) at ($(D) !1/2! (D1)$);
+    \coordinate (M) at ($(A) !1/3! (A1)$);
+    \coordinate (N) at ($(C) !1/3! (C1)$);
+    
+    
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+
+
+    \draw[dashed, blue] (K) -- (M);
+    \draw[dashed, blue] (K) -- (N);
+    
+    
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (B1) -- (C1);
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[above left, my label] at (K) {$K$};
+    \node[left, my label] at (M) {$M$};
+
+    \node[right, my label] at (N) {$N$};
+    
+    
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,M,K,N} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawCubeTaskTwoPFifteen}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (K) at ($(D) !1/2! (D1)$);
+    \coordinate (M) at ($(A) !1/2! (A1)$);
+    \coordinate (P) at ($(B) !1/3! (B1)$);
+    \coordinate (N) at ($(C) !1/3! (C1)$);
+    
+    
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+            (K) -- (M) -- (P) -- (N) -- cycle;
+
+
+    \draw[dashed, blue] (K) -- (M);
+    \draw[dashed, blue] (K) -- (N);
+    \draw[thick, blue] (M) -- (P);
+    \draw[thick, blue] (P) -- (N);
+    
+    
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (B1) -- (C1);
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[above left, my label] at (K) {$K$};
+    \node[left, my label] at (M) {$M$};
+    \node[below right, my label] at (P) {$P$};
+    \node[right, my label] at (N) {$N$};
+    
+    
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,M,K,N,P} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawCubeTaskTwoPSixteen}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (N) at ($(D) !2/3! (D1)$);
+    \coordinate (M) at ($(A) !1/3! (A1)$);
+    \coordinate (T) at ($(A) !2/3! (B)$);
+    \coordinate (K) at ($(B) !1/2! (C)$);
+    \coordinate (P) at ($(C) !1/6! (C1)$);
+    
+    
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+            (N) -- (M) -- (T) -- (K) -- (P) -- cycle;
+
+
+    \draw[dashed, blue] (N) -- (M);
+    \draw[dashed, blue] (N) -- (P);
+    \draw[dashed, blue] (T) -- (K);
+    \draw[thick, blue] (K) -- (P);
+    \draw[thick, blue] (T) -- (M);
+    
+    
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (B1) -- (C1);
+
+   
+
+   \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[below right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[above left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[below right, my label] at (K) {$P$};
+    \node[left, my label] at (M) {$M$};
+    \node[right, my label] at (P) {$N$};
+    \node[below, my label] at (T) {$T$};
+    \node[above left, my label] at (N) {$K$};
+    
+    
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,M,K,N,T,P} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawCubeTaskTwoPSeventeen}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (P) at ($(D1) !1/2! (C1)$);
+    \coordinate (K) at ($(D) !1/2! (C)$);
+    \coordinate (N) at ($(A1) !1/2! (D1)$);
+    \coordinate (M) at ($(A) !1/2! (D)$);
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+            (M) -- (N) -- (P) -- (K)-- cycle;
+
+    \draw[dashed, blue] (K) -- (P);
+    \draw[dashed, blue] (M) -- (K);
+    \draw[thick, blue] (N) -- (P);
+    \draw[dashed, blue] (N) -- (M);
+
+
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B1) -- (C1);
+    \draw[thick] (B) -- (B1);
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[above right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[below left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[below right, my label] at (K) {$K$};
+    \node[above left, my label] at (P) {$P$};
+    \node[above left, my label] at (N) {$N$};
+    \node[below, my label] at (M) {$M$};
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,K,P,M,N} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawCubeTaskTwoPEighteen}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x,0);
+    \coordinate (C) at (\x * 4 / 11 * 0.9 + \x,\x * 7 / 11 * 0.3);
+    \coordinate (D) at (\x * 4 / 11 * 0.9,\x * 7 / 11 * 0.3);
+    \coordinate (A1) at (0,\x);
+    \coordinate (B1) at (\x,\x);
+    \coordinate (C1) at (\x * 4 / 11 * 0.9 + \x, 1.19);
+    \coordinate (D1) at (\x * 4 / 11 * 0.9, 1.19);
+
+
+    \coordinate (N) at ($(A1) !49/96! (D1)$);
+    \coordinate (M) at ($(A) !12/15! (A1)$);
+    \coordinate (T) at ($(A) !2/3! (B)$);
+    \coordinate (K) at ($(B) !1/2! (C)$);
+    \coordinate (P) at ($(C) !1/6! (C1)$);
+    
+    \coordinate (F) at ($(N) + (K) - (T)$);
+
+    
+
+    \draw[dashed] (A) -- (D);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (D) -- (C);
+    \draw[dashed] (D) -- (D1);
+
+    \draw[thick] (A) -- (B) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (D1) -- (A1);
+    \draw[thick] (C1) -- (D1);
+    \draw[thick] (A1) -- (D1);
+    \draw[thick] (A) -- (A1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+            (F) -- (N) -- (M) -- (T) -- (K) -- (P) -- cycle;
+
+
+    \draw[dashed, blue] (N) -- (M);
+    \draw[thick, blue] (N) -- (F);
+    \draw[dashed, blue] (F) -- (P);
+    \draw[dashed, blue] (T) -- (K);
+    \draw[thick, blue] (K) -- (P);
+    \draw[thick, blue] (T) -- (M);
+    
+    
+    \draw[thick] (A1) -- (B1);
+    \draw[thick] (B) -- (B1);
+    \draw[thick] (B1) -- (C1);
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[above left, my label] at (D) {$D$};
+    \node[below right, my label] at (C) {$C$};
+    \node[below right, my label] at (B) {$B$};
+    \node[above left, my label] at (A1) {$A_1$};
+    \node[above, my label] at (D1) {$D_1$};
+    \node[above right, my label] at (C1) {$C_1$};
+    \node[below right, my label] at (B1) {$B_1$};
+
+    \node[below right, my label] at (K) {$P$};
+    \node[left, my label] at (M) {$M$};
+    \node[right, my label] at (P) {$N$};
+    \node[below, my label] at (T) {$T$};
+    \node[above left, my label] at (N) {$K$};
+    \node[above left, my label] at (F) {$F$};
+    
+    
+    
+    
+    \foreach \point in {A,B,C,D,A1,B1,C1,D1,M,K,N,T,P,F} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawTetrahedron}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0 / 6}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x * 6, \x * 3);
+    \coordinate (C) at (\x * 9, -\x);
+    \coordinate (A1) at ($(A) + (0, 1.41 * \x * 3)$);
+    \coordinate (B1) at ($(B) + (0, 1.41 * \x * 3)$);
+    \coordinate (C1) at ($(C) + (0, 1.41 * \x * 3)$);
+
+
+    \coordinate (K) at ($(B1) !2/3! (C1)$);
+    \coordinate (N) at ($(A1) !2/3! (B1)$);
+    \coordinate (M) at ($(A) !1/3! (B)$);
+
+
+
+    
+
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (B1);
+
+    \draw[thick] (A) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (A) -- (A1);
+    \draw[thick] (B1) -- (A1);
+    \draw[thick] (C1) -- (A1);
+    \draw[thick] (C1) -- (B1);
+
+    \draw[thick, blue] (K) -- (N);
+    \draw[dashed, blue] (M) -- (N);
+    
+
+
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (C) {$C$};
+    \node[right, my label] at (B) {$B$};
+    \node[left, my label] at (A1) {$A_1$};
+    \node[right, my label] at (C1) {$C_1$};
+    \node[above, my label] at (B1) {$B_1$};
+
+    \node[right, my label] at (K) {$K$};
+    \node[above left, my label] at (N) {$N$};
+    \node[above left, my label] at (M) {$M$};
+
+    
+    \path (A1) -- (A) node[midway, left, my formula] {$\sqrt{2}$};
+    \path (A) -- (M) node[midway, above, sloped, my formula] {$1$};
+    \path (M) -- (B) node[midway, above, sloped, my formula] {$2$};
+    \path (A1) -- (N) node[midway, above, sloped, my formula] {$2$};
+    \path (N) -- (B1) node[midway, above, sloped, my formula] {$1$};
+    \path (B1) -- (K) node[midway, above, sloped, my formula] {$2$};
+    \path (K) -- (C1) node[midway, above, sloped, my formula] {$1$};
+    
+    
+
+     
+    \foreach \point in {A,B,C,A1,B1,C1,N,K,M} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawTetrahedronPTwo}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0 / 6}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x * 6, \x * 3);
+    \coordinate (C) at (\x * 9, -\x);
+    \coordinate (A1) at ($(A) + (0, 1.41 * \x * 3)$);
+    \coordinate (B1) at ($(B) + (0, 1.41 * \x * 3)$);
+    \coordinate (C1) at ($(C) + (0, 1.41 * \x * 3)$);
+
+
+    \coordinate (K) at ($(B1) !2/3! (C1)$);
+    \coordinate (N) at ($(A1) !2/3! (B1)$);
+    \coordinate (M) at ($(A) !1/3! (B)$);
+    \coordinate (P) at ($(B) !7/9! (C)$);
+
+    
+
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (B1);
+
+    \draw[thick] (A) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (A) -- (A1);
+    \draw[thick] (B1) -- (A1);
+    \draw[thick] (C1) -- (B1);
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+            (M) -- (N) -- (K) -- (P)-- cycle;
+
+    \draw[thick, blue] (K) -- (N);
+    \draw[dashed, blue] (M) -- (N);
+    \draw[dashed, blue] (M) -- (P);
+    \draw[dashed, blue] (K) -- (P);
+    
+
+    \draw[thick] (C1) -- (A1);
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (C) {$C$};
+    \node[right, my label] at (B) {$B$};
+    \node[left, my label] at (A1) {$A_1$};
+    \node[right, my label] at (C1) {$C_1$};
+    \node[above, my label] at (B1) {$B_1$};
+
+    \node[right, my label] at (K) {$K$};
+    \node[above left, my label] at (N) {$N$};
+    \node[above left, my label] at (M) {$M$};
+    \node[right, my label] at (P) {$P$};
+
+   
+    \path (A1) -- (A) node[midway, left, my formula] {$\sqrt{2}$};
+    \path (A) -- (M) node[midway, above, sloped, my formula] {$1$};
+    \path (M) -- (B) node[midway, above, sloped, my formula] {$2$};
+    \path (A1) -- (N) node[midway, above, sloped, my formula] {$2$};
+    \path (N) -- (B1) node[midway, above, sloped, my formula] {$1$};
+    \path (B1) -- (K) node[midway, above, sloped, my formula] {$2$};
+    \path (K) -- (C1) node[midway, above, sloped, my formula] {$1$};
+    
+    
+    \foreach \point in {A,B,C,A1,B1,C1,N,K,M,P} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\drawTetrahedronPThree}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0 / 6}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x * 6, \x * 3);
+    \coordinate (C) at (\x * 9, -\x);
+    \coordinate (A1) at ($(A) + (0, 1.41 * \x * 3)$);
+    \coordinate (B1) at ($(B) + (0, 1.41 * \x * 3)$);
+    \coordinate (C1) at ($(C) + (0, 1.41 * \x * 3)$);
+
+
+    \coordinate (K) at ($(B1) !2/3! (C1)$);
+    \coordinate (N) at ($(A1) !2/3! (B1)$);
+    \coordinate (M) at ($(A) !1/3! (B)$);
+    \coordinate (F) at ($(B) !1/3! (A)$);
+    \coordinate (S) at ($(B) !2/3! (C)$);
+    \coordinate (H) at ($(A1) !1/3! (B1)$);
+    
+    \coordinate (L) at ($(M) + (K) - (N)$);
+    
+    
+
+    
+
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (B1);
+    \draw[dashed] (K) -- (S);
+    \draw[dashed] (F) -- (N);
+    \draw[dashed] (M) -- (H);
+    \draw[dashed] (F) -- (L);
+    \draw[dashed] (M) -- (S);
+    \draw[dashed] (K) -- (L);
+    
+    
+
+    \draw[thick] (A) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (A) -- (A1);
+    \draw[thick] (B1) -- (A1);
+    \draw[thick] (C1) -- (B1);
+
+
+    \draw[thick, blue] (K) -- (N);
+    \draw[dashed, blue] (M) -- (N);
+    \draw[dashed, blue] (M) -- (L);
+    
+    
+
+    \draw[thick] (C1) -- (A1);
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below right, my label] at (C) {$C$};
+    \node[right, my label] at (B) {$B$};
+    \node[left, my label] at (A1) {$A_1$};
+    \node[right, my label] at (C1) {$C_1$};
+    \node[above, my label] at (B1) {$B_1$};
+
+    \node[right, my label] at (K) {$K$};
+    \node[above left, my label] at (N) {$N$};
+    \node[above left, my label] at (M) {$M$};
+    \node[above left, my label] at (F) {$F$};
+    \node[right, my label] at (S) {$S$};
+    \node[above, my label] at (H) {$H$};
+    \node[below, my label] at (L) {$L$};
+    
+    \pic [draw, thick, angle radius=2mm, angle eccentricity=1.2] {right angle = M--H--N};
+    \pic [draw, thick, angle radius=2mm, angle eccentricity=1.2] {right angle = N--F--B};
+    \pic [draw, thick, angle radius=2mm, angle eccentricity=1.2] {right angle = K--S--B};
+    
+    \path (A1) -- (A) node[midway, left, my formula] {$\sqrt{2}$};
+    \path (A) -- (M) node[midway, above, sloped, my formula] {$1$};
+    \path (F) -- (B) node[midway, above, sloped, my formula] {$1$};
+    \path (H) -- (N) node[midway, above, sloped, my formula] {$1$};
+    \path (B1) -- (K) node[midway, above, sloped, my formula] {$2$};
+    \path (K) -- (C1) node[midway, above, sloped, my formula] {$1$};
+    
+    \foreach \point in {A,B,C,A1,B1,C1,N,K,M,F,S,L,H} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\drawTetrahedronPFour}[2][]{
+  \begin{tikzpicture}[my drawing=#2,#1]
+    
+    \def\x{1.0 / 6}
+    \def\y{1.0}
+    \def\z{1.0}
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\x * 6, \x * 3);
+    \coordinate (C) at (\x * 9, -\x);
+    \coordinate (A1) at ($(A) + (0, 1.41 * \x * 3)$);
+    \coordinate (B1) at ($(B) + (0, 1.41 * \x * 3)$);
+    \coordinate (C1) at ($(C) + (0, 1.41 * \x * 3)$);
+
+
+    \coordinate (K) at ($(B1) !2/3! (C1)$);
+    \coordinate (N) at ($(A1) !2/3! (B1)$);
+    \coordinate (M) at ($(A) !1/3! (B)$);
+    \coordinate (E) at ($(C) !1/2! (C1)$);
+    
+    \coordinate (L) at ($(M) + (K) - (N)$);
+    \coordinate (P) at ($(C) + 1/3*(C) - 1/3*(B)$);   
+    
+    
+
+    
+
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (B1);
+    \draw[dashed] (P) -- (C);
+    
+    
+
+    \draw[thick] (A) -- (C);
+    \draw[thick] (C) -- (C1);
+    \draw[thick] (A) -- (A1);
+    \draw[thick] (B1) -- (A1);
+    \draw[thick] (C1) -- (B1);
+    \draw[thick] (E) -- (P);
+    \draw[thick] (L) -- (P);
+
+
+    \filldraw[fill=blue!15, draw=blue!0, thick, opacity=0.7] 
+                (M) -- (N) -- (K) -- (E) -- (L) -- cycle;
+
+    \draw[thick, blue] (K) -- (N);
+    \draw[dashed, blue] (M) -- (N);
+    \draw[dashed, blue] (M) -- (L);
+    \draw[dashed, blue] (K) -- (E);
+    \draw[thick, blue] (E) -- (L);
+
+    
+    
+    
+
+    \draw[thick] (C1) -- (A1);
+    \draw[dashed] (K) -- (L);
+    
+   
+
+    \node[below left, my label] at (A) {$A$};
+    \node[below left, my label] at (C) {$C$};
+    \node[right, my label] at (B) {$B$};
+    \node[left, my label] at (A1) {$A_1$};
+    \node[right, my label] at (C1) {$C_1$};
+    \node[above, my label] at (B1) {$B_1$};
+
+    \node[right, my label] at (K) {$K$};
+    \node[above left, my label] at (N) {$N$};
+    \node[above left, my label] at (M) {$M$};
+    \node[below, my label] at (L) {$L$};
+    \node[right, my label] at (P) {$P$}; 
+    \node[right, my label] at (E) {$E$};
+    
+    
+    \path (K) -- (C1) node[midway, above, sloped, my formula] {$1$};
+    \path (C1) -- (E) node[midway, right, my formula] {$\frac{\sqrt{2}}{2}$};
+    \path (E) -- (C) node[midway, left, my formula] {$\frac{\sqrt{2}}{2}$};    
+    
+    \foreach \point in {A,B,C,A1,B1,C1,N,K,M,L,P,E} {
+      \node[vertex] at (\point) {};
+    }
+  \end{tikzpicture}
+}

@@ -1,0 +1,283 @@
+
+\documentclass{article}
+\usepackage{fontspec} 
+\usepackage[russian]{babel}
+\setmainfont{CMU Serif} 
+
+\usepackage[T2A]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{calc, angles}
+\usetikzlibrary{arrows.meta}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{tkz-euclide}
+\usepackage{titlesec}
+\usepackage{caption}
+\captionsetup[figure]{name=Рис., labelformat=simple}
+\pagestyle{empty}
+
+\usepackage{indentfirst}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+
+\input{figures}
+
+
+\title{Кубы}
+\author{}
+\date{}
+
+\titleformat{\section}{
+  \vspace{-1.3cm}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-0.7cm}]
+
+
+\begin{document}
+\maketitle
+
+\vspace{0.5cm}
+% \section{}
+\begin{figure}[htbp]\label{tab:data}
+  \centering
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \drawCubeTaskOne[]{2.5} 
+    \vspace{-0.5cm}
+    \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \drawCubeTaskOnePTwo[]{5} 
+    \vspace{-0.3cm}
+    \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \drawCubeTaskOnePThree[]{2.5} 
+    \vspace{-0.3cm}
+    \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \drawPyramidTask[]{2.5} 
+    \vspace{-0.3cm}
+    \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \drawPyramidTaskPTwo[]{2.5} 
+    \vspace{-0.3cm}
+    \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \drawPyramidTaskPThree[]{2.5} 
+    \vspace{-0.3cm}
+    \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \drawPyramidTaskPFour[]{2.5} 
+    \vspace{-0.3cm}
+    \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \drawPyramidTaskPFive[]{2.5} 
+    \vspace{-0.3cm}
+    \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+
+\end{figure}
+\begin{figure}
+    \centering
+    \begin{minipage}{0.3\textwidth}
+        \drawCubeTaskTwo[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+        \drawCubeTaskTwoPTwo[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+    \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+        \drawCubeTaskTwoPThree[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+\hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPFour[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPFive[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPSix[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPSeven[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPEight[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPNine[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+   \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPTen[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+   \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPEleven[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPTwelve[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPThirteen[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+    \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPFourteen[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+      \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPFifteen[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+    \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPSixteen[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+      \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPSeventeen[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawCubeTaskTwoPEighteen[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  
+\end{figure}
+
+\begin{figure}
+    \centering
+     % \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawTetrahedron[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+   \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawTetrahedronPTwo[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawTetrahedronPThree[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+  \hspace{-0.2cm}
+  \begin{minipage}{0.3\textwidth}
+    \drawTetrahedronPFour[]{2.5} 
+        \vspace{-0.3cm}
+        \hspace{-1cm}
+    \caption{}
+  \end{minipage}
+\end{figure}
+
+
+...
+\hyperref[tab:data]{См. табл.}
+% \section{}
+\vspace{0.5cm}
+
+\end{document}
